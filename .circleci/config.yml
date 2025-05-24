@@ -17,15 +17,14 @@ jobs:
 
 workflows:
   deploy_on_pr:
+    when:
+      or:
+        - equal: [ opened, << pipeline.webhook.pull_request.state >> ]
+        - equal: [ synchronize, << pipeline.webhook.pull_request.action >> ]
     jobs:
       - deploy:
           filters:
             branches:
               ignore: /.*/
-    triggers:
-      - github:
-          event: pull_request
-          action: opened
-      - github:
-          event: pull_request
-          action: synchronize
+          context:
+            - VERCEL_TOKEN
