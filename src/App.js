@@ -5,6 +5,7 @@ function App() {
     <div>
       <h1>Hello from Preview Deploy App</h1>
       <p>This is a simple React app deployed using CircleCI and Vercel.</p>
+      <p>- By Vivek Maskara</p>
     </div>
   );
 }
